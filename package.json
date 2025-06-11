@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "bunx --bun next dev",
-    "build": "bunx --bun next build",
-    "start": "bunx --bun next start",
-    "lint": "bunx --bun next lint"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -25,7 +25,6 @@
     "@eslint/eslintrc": "^3"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "bun": ">=1.0.0"
+    "node": ">=18.0.0"
   }
 }
