@@ -1,0 +1,16 @@
+# Cloudflare Pages 配置
+name = "personal-homepage"
+compatibility_date = "2023-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+# 构建配置
+[build]
+command = "bun run build"
+output_directory = ".next"
+
+# 环境变量
+[env.production]
+NODE_VERSION = "20"
+
+[env.preview]
+NODE_VERSION = "20" 
