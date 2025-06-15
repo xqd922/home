@@ -1,6 +1,6 @@
 # 个人主页
 
-这是一个简洁大方的个人主页项目，使用Next.js构建，由Bun管理，可部署到Vercel和Cloudflare Pages。
+这是一个简洁优雅的个人主页项目，使用Next.js构建，由Bun管理，可部署到Vercel和Cloudflare Pages。
 
 ## 技术栈
 
@@ -13,8 +13,8 @@
 ## 功能
 
 - 响应式设计，适配各种屏幕尺寸
-- 暗色/亮色模式自动切换
-- 简洁大方的UI设计
+- 暗色/亮色模式自动切换，并提供手动主题按钮
+- 优雅的渐变配色与简洁布局
 - 个人介绍、技能展示、项目展示和联系方式等板块
 
 ## 本地开发
@@ -58,6 +58,7 @@ bun run dev
 
 - 编辑 `app/page.tsx` 修改主页内容
 - 编辑 `app/globals.css` 修改全局样式
+- 编辑 `app/components/ThemeToggle.tsx` 自定义主题切换按钮
 - 在 `public/` 目录中添加你的头像和项目图片
 
 ## 许可证

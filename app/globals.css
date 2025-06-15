@@ -2,11 +2,11 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #0f172a;
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --secondary: #f8fafc;
-  --secondary-hover: #f1f5f9;
+  --foreground: #111827;
+  --primary: #8b5cf6;
+  --primary-hover: #7c3aed;
+  --secondary: #f3f4f6;
+  --secondary-hover: #e5e7eb;
   --radius: 0.5rem;
 }
 
@@ -23,12 +23,12 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0f172a;
-    --foreground: #f8fafc;
-    --primary: #3b82f6;
-    --primary-hover: #60a5fa;
-    --secondary: #1e293b;
-    --secondary-hover: #334155;
+    --background: #1f2937;
+    --foreground: #f3f4f6;
+    --primary: #c084fc;
+    --primary-hover: #a855f7;
+    --secondary: #374151;
+    --secondary-hover: #4b5563;
   }
 }
 

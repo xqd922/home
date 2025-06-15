@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -37,9 +38,9 @@ const Header = () => {
             </Link>
           </div>
           
-          <nav className="flex space-x-8">
-            <Link 
-              href="#about" 
+          <nav className="flex items-center space-x-8">
+            <Link
+              href="#about"
               className="text-foreground/80 hover:text-foreground transition-colors font-medium text-sm"
             >
               关于
@@ -56,12 +57,13 @@ const Header = () => {
             >
               项目
             </Link>
-            <Link 
-              href="#contact" 
+            <Link
+              href="#contact"
               className="text-foreground/80 hover:text-foreground transition-colors font-medium text-sm"
             >
               联系
             </Link>
+            <ThemeToggle />
           </nav>
         </div>
       </div>
