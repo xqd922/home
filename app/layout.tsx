@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "我的个人主页",
-  description: "一个简洁大方的个人网站",
+  title: "小明的主页",
+  description: "记录项目与分享的个人网站",
 };
 
 export default function RootLayout({
