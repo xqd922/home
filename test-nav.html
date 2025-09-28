@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Test</title>
+    <style>
+        .nav-button {
+            position: fixed;
+            left: 16px;
+            top: 16px;
+            z-index: 1000;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 8px;
+            cursor: pointer;
+        }
+        .drawer {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100vh;
+            width: 320px;
+            background: white;
+            border-right: 1px solid #ccc;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 950;
+        }
+        .drawer.open {
+            transform: translateX(0);
+        }
+        .overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.2);
+            z-index: 900;
+        }
+    </style>
+</head>
+<body>
+    <button class="nav-button" onclick="toggleNav()">
+        <span id="icon">☰</span>
+    </button>
+
+    <div id="overlay" class="overlay" style="display: none;" onclick="closeNav()"></div>
+
+    <div id="drawer" class="drawer">
+        <div style="padding: 20px;">
+            <h2>Navigation</h2>
+            <p>Drawer content here</p>
+        </div>
+    </div>
+
+    <script>
+        let isOpen = false;
+
+        function toggleNav() {
+            console.log('Toggle clicked, current state:', isOpen);
+            isOpen = !isOpen;
+            updateNav();
+        }
+
+        function closeNav() {
+            console.log('Close clicked');
+            isOpen = false;
+            updateNav();
+        }
+
+        function updateNav() {
+            console.log('Updating nav, isOpen:', isOpen);
+            const drawer = document.getElementById('drawer');
+            const overlay = document.getElementById('overlay');
+            const icon = document.getElementById('icon');
+
+            if (isOpen) {
+                drawer.classList.add('open');
+                overlay.style.display = 'block';
+                icon.textContent = '✕';
+            } else {
+                drawer.classList.remove('open');
+                overlay.style.display = 'none';
+                icon.textContent = '☰';
+            }
+        }
+    </script>
+</body>
+</html>
