@@ -304,22 +304,6 @@ export default function ResumePage() {
         </div>
       </div>
 
-      {/* 页脚 */}
-      <footer className="mt-16 pt-8 border-t border-neutral-200 dark:border-neutral-700 text-center no-print">
-        <div className="prose prose-neutral text-sm dark:prose-invert">
-          <p>Last updated: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}.</p>
-          <p className="mt-2">
-            This resume is also available as a{' '}
-            <button
-              onClick={downloadPDF}
-              className="font-medium hover:text-neutral-600 dark:hover:text-neutral-400 transition-colors underline"
-            >
-              PDF download
-            </button>.
-          </p>
-        </div>
-      </footer>
-
       {/* 打印样式 */}
       <style jsx global>{`
         @media print {

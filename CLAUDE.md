@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Tech Stack
 - Next.js 15 with TypeScript
-- Tailwind CSS v4.1.13 for styling
+- Tailwind CSS v3.4.0 for styling
 - Bun (primary) / npm (fallback) for package management
 - Static export configuration for deployment
 
@@ -15,7 +15,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `bun install` - Install dependencies
 
 ## Architecture Overview
-This is a single-page resume website built with Next.js App Router. The main component (`src/app/page.tsx`) contains all resume content as embedded configuration objects at the top of the file:
+This is a single-page resume website built with Next.js App Router. The main component (`app/page.tsx`) contains all resume content as embedded configuration objects at the top of the file:
 
 - `personalInfo` - Contact details and professional summary
 - `education` - Educational background
@@ -25,8 +25,8 @@ This is a single-page resume website built with Next.js App Router. The main com
 
 ## Key Configuration
 - **next.config.mjs**: Static export mode enabled for deployment to static hosts
-- **tsconfig.json**: Path aliases configured (`@/*` maps to `./src/*`)
-- **globals.css**: Contains extensive print media queries for PDF generation
+- **tsconfig.json**: Path aliases configured (`@/*` maps to `./`)
+- **app/globals.css**: Contains extensive print media queries for PDF generation
 
 ## PDF Functionality
 Dual approach for PDF generation:

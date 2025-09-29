@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import avatar from './avatar.webp'
 import {
   ArrowRightIcon,
@@ -15,143 +16,156 @@ import {
   BookOpenIcon,
   ClockIcon,
   BriefcaseIcon,
-  GlobeAltIcon
+  GlobeAltIcon,
+  MapPinIcon,
+  ChevronDownIcon,
+  AcademicCapIcon
 } from '@heroicons/react/24/outline'
 
-// 个人信息配置
+// Personal Information Configuration
 const personalInfo = {
   name: 'Xqd',
-  title: '学生 & 开发者',
-  tagline: '在代码与生活中寻找平衡',
+  title: 'Computer Science Student',
+  year: 'Senior (4th Year)',
   location: 'China',
   email: 'contact@example.com',
   website: 'https://blog.xqd.pp.ua',
   github: 'https://github.com/yourusername',
-  description: '喜欢折腾技术，热爱摄影和音乐。相信技术可以让生活更美好，也相信生活能让技术更有温度。',
-  currentStatus: '正在学习 Next.js 和 TypeScript',
-  mood: '😊'
+  description: 'Passionate computer science student with strong interests in software development, web technologies, and continuous learning. Unity of knowledge and action.',
+  currentStatus: 'Currently learning Next.js and TypeScript',
+  graduationYear: '2025'
 }
 
-// 最新动态 - 更生活化
+// Recent Activities
 const recentActivities = [
   {
-    title: '今天的心情',
-    content: '阳光很好，适合写代码和拍照 ☀️',
-    icon: HeartIcon,
-    time: '今天'
+    title: 'Academic Progress',
+    content: 'Working on senior capstone project - a full-stack web application',
+    icon: AcademicCapIcon,
+    time: 'This semester'
   },
   {
-    title: '正在听',
-    content: 'Bon Iver - Re: Stacks',
-    icon: MusicalNoteIcon,
-    time: '现在'
-  },
-  {
-    title: '最近在学',
-    content: 'Next.js 15 的新特性，感觉很有趣',
+    title: 'Currently Learning',
+    content: 'Advanced React patterns and TypeScript best practices',
     icon: BookOpenIcon,
-    time: '本周'
+    time: 'This week'
   },
   {
-    title: '刚刚完成',
-    content: '个人主页的重新设计',
+    title: 'Side Project',
+    content: 'Building a personal blog with Next.js 15 and MDX',
     icon: CodeBracketIcon,
-    time: '1小时前'
+    time: 'Ongoing'
+  },
+  {
+    title: 'Job Search',
+    content: 'Preparing for software engineer positions post-graduation',
+    icon: BriefcaseIcon,
+    time: 'Current focus'
   }
 ]
 
-// 生活片段
-const lifeSnapshots = [
+// Academic & Personal Highlights
+const highlights = [
   {
-    title: '摄影作品',
-    description: '最近拍摄的一些城市夜景和街头瞬间',
-    count: '12 张照片',
-    icon: CameraIcon
+    title: 'Academic Projects',
+    description: 'Completed various coursework projects in data structures, algorithms, and web development',
+    count: '10+ projects',
+    icon: AcademicCapIcon
   },
   {
-    title: '读书笔记',
-    description: '《代码整洁之道》和一些科幻小说的感悟',
-    count: '3 篇笔记',
+    title: 'Technical Blog',
+    description: 'Writing about my learning journey and technical insights',
+    count: '5+ articles',
     icon: BookOpenIcon
   },
   {
-    title: '音乐收藏',
-    description: 'Indie Rock 和 Electronic 音乐精选',
-    count: '50+ 首歌',
-    icon: MusicalNoteIcon
+    title: 'Open Source',
+    description: 'Contributing to open source projects and maintaining personal repositories',
+    count: '3+ repos',
+    icon: CodeBracketIcon
   }
 ]
 
-// 快速链接
+// Quick Links
 const quickLinks = [
   {
-    name: '个人博客',
+    name: 'Personal Blog',
     url: 'https://blog.xqd.pp.ua',
-    description: '技术文章和生活感悟',
+    description: 'Technical articles and learning journey',
     icon: GlobeAltIcon
   },
   {
-    name: '详细简历',
+    name: 'Resume',
     url: '/resume',
-    description: '专业背景和项目经验',
+    description: 'Academic background and project experience',
     icon: DocumentTextIcon
   },
   {
     name: 'GitHub',
     url: 'https://github.com/yourusername',
-    description: '开源项目和代码',
+    description: 'Open source projects and code repositories',
     icon: CodeBracketIcon
   }
 ]
 
-// 精选项目 - 简化版
+// Featured Projects
 const featuredProjects = [
   {
     title: 'NextMe Blog',
-    description: '个人博客，记录技术学习和生活感悟',
+    description: 'A modern personal blog built with Next.js 15, featuring responsive design and MDX content management.',
     technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'MDX'],
     url: 'https://blog.xqd.pp.ua',
     github: 'https://github.com/yourusername/blog',
     period: '2024',
-    status: '持续更新'
+    status: 'In Development',
+    type: 'Personal Project'
   },
   {
-    title: '个人主页',
-    description: '简洁优雅的个人展示空间',
+    title: 'Student Portfolio',
+    description: 'Clean and professional portfolio website showcasing academic projects and technical skills.',
     technologies: ['Next.js', 'React', 'Tailwind CSS'],
     url: '#',
-    github: 'https://github.com/yourusername/homepage',
+    github: 'https://github.com/yourusername/portfolio',
     period: '2024',
-    status: '正在完善'
+    status: 'Active',
+    type: 'Academic Project'
   }
 ]
 
-// 兴趣爱好
+// Technical Interests
 const interests = [
-  '摄影', '音乐', '编程', '阅读', '技术分享', '开源项目'
+  'Software Development', 'Web Technologies', 'Computer Science', 'Open Source', 'Photography', 'Technology Trends'
 ]
 
 export default function HomePage() {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  if (!mounted) return null
+
   return (
     <section className="sm:px-14 sm:pt-6">
-      {/* 页面标题 */}
+      {/* Page Header */}
       <div className="flex items-center justify-between mb-2">
-        <h1 className="text-2xl font-medium tracking-tighter">个人主页</h1>
+        <h1 className="text-2xl font-medium tracking-tighter">Home</h1>
         <div className="flex gap-2">
           <Link
             href="/resume"
             className="flex items-center justify-center rounded-xl border-[0.5px] border-neutral-200 p-2 text-xs font-medium shadow-[0_2px_2px_rgba(0,0,0,0.04)] transition-all duration-300 hover:bg-stone-100 hover:shadow-none dark:border-neutral-700 dark:bg-neutral-700/20 dark:hover:bg-neutral-900/20"
           >
             <DocumentTextIcon className="mr-1 h-4 w-4" />
-            <p>简历</p>
+            <p>Resume</p>
           </Link>
         </div>
       </div>
       <p className="prose prose-neutral mb-8 text-sm dark:prose-invert">
-        欢迎来到我的个人空间，了解我的生活和创作。
+        Welcome to my personal space. Get to know my academic journey and projects.
       </p>
 
-      {/* 个人信息头部 */}
+      {/* Personal Information Header */}
       <header className="mb-12">
         <div className="flex flex-col sm:flex-row items-start gap-6">
           <Image
@@ -164,25 +178,25 @@ export default function HomePage() {
           />
           <div className="flex-1">
             <h2 className="mb-1 text-xl font-medium tracking-tighter">
-              你好，我是 {personalInfo.name} {personalInfo.mood}
+              Hi, I'm {personalInfo.name}
             </h2>
             <p className="prose prose-neutral text-sm dark:prose-invert mb-2">
-              {personalInfo.title}
+              {personalInfo.title} • {personalInfo.year}
             </p>
             <p className="text-xs text-blue-600 dark:text-blue-400 mb-4 font-medium">
-              {personalInfo.tagline}
+              Expected graduation: {personalInfo.graduationYear}
             </p>
             <p className="text-sm text-neutral-700 dark:text-neutral-300 mb-6 leading-relaxed">
               {personalInfo.description}
             </p>
 
-            {/* 当前状态 */}
+            {/* Current Status */}
             <div className="inline-flex items-center gap-2 px-3 py-2 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg mb-6">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
               <span className="text-sm text-green-700 dark:text-green-300">{personalInfo.currentStatus}</span>
             </div>
 
-            {/* 联系方式 */}
+            {/* Contact Information */}
             <div className="flex flex-wrap items-center gap-1 text-xs">
               <div className="flex items-center gap-1">
                 <span className="h-2 w-2 rounded-full bg-green-500"></span>
@@ -216,12 +230,12 @@ export default function HomePage() {
       </header>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-        {/* 左侧：生活动态 */}
+        {/* Left Side: Recent Activities */}
         <div className="space-y-8">
           <section>
             <h3 className="flex items-center gap-2 text-lg font-medium tracking-tighter mb-6">
               <ClockIcon className="w-4 h-4" />
-              最近在做什么
+              Recent Activities
             </h3>
 
             <div className="space-y-4">
@@ -248,11 +262,11 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* 兴趣爱好 */}
+          {/* Interests */}
           <section>
             <h3 className="flex items-center gap-2 text-lg font-medium tracking-tighter mb-6">
               <StarIcon className="w-4 h-4" />
-              我的兴趣
+              Interests
             </h3>
             <div className="flex flex-wrap gap-2">
               {interests.map((interest) => (
@@ -267,31 +281,31 @@ export default function HomePage() {
           </section>
         </div>
 
-        {/* 右侧：生活片段和快速链接 */}
+        {/* Right Side: Highlights and Quick Links */}
         <div className="lg:col-span-2 space-y-12">
-          {/* 生活片段 */}
+          {/* Academic & Personal Highlights */}
           <section>
             <h3 className="flex items-center gap-2 text-lg font-medium tracking-tighter mb-6">
-              <CameraIcon className="w-4 h-4" />
-              生活片段
+              <AcademicCapIcon className="w-4 h-4" />
+              Academic & Personal Highlights
             </h3>
 
             <div className="grid md:grid-cols-2 gap-6">
-              {lifeSnapshots.map((snapshot, index) => (
+              {highlights.map((highlight, index) => (
                 <div key={index} className="p-4 border border-neutral-200 dark:border-neutral-700 rounded-xl hover:shadow-sm transition-shadow">
                   <div className="flex items-start gap-3">
-                    <snapshot.icon className="w-5 h-5 text-neutral-600 dark:text-neutral-400 mt-0.5 flex-shrink-0" />
+                    <highlight.icon className="w-5 h-5 text-neutral-600 dark:text-neutral-400 mt-0.5 flex-shrink-0" />
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-2">
                         <h4 className="text-md font-medium tracking-tighter">
-                          {snapshot.title}
+                          {highlight.title}
                         </h4>
                         <span className="text-xs text-neutral-500 dark:text-neutral-400">
-                          {snapshot.count}
+                          {highlight.count}
                         </span>
                       </div>
                       <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
-                        {snapshot.description}
+                        {highlight.description}
                       </p>
                     </div>
                   </div>
@@ -300,11 +314,11 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* 快速链接 */}
+          {/* Quick Links */}
           <section>
             <h3 className="flex items-center gap-2 text-lg font-medium tracking-tighter mb-6">
               <ArrowRightIcon className="w-4 h-4" />
-              快速链接
+              Quick Links
             </h3>
 
             <div className="grid md:grid-cols-3 gap-4">
@@ -332,11 +346,11 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* 最近项目（简化版） */}
+          {/* Featured Projects */}
           <section>
             <h3 className="flex items-center gap-2 text-lg font-medium tracking-tighter mb-6">
               <BriefcaseIcon className="w-4 h-4" />
-              最近在做
+              Featured Projects
             </h3>
 
             <div className="space-y-6">
@@ -358,8 +372,8 @@ export default function HomePage() {
                           project.title
                         )}
                       </h4>
-                      <span className="inline-flex items-center rounded-full border border-orange-200 bg-orange-50 px-2 py-0.5 text-xs font-medium text-orange-700 dark:border-orange-800 dark:bg-orange-900/20 dark:text-orange-300">
-                        {project.status}
+                      <span className="inline-flex items-center rounded-full border border-blue-200 bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-700 dark:border-blue-800 dark:bg-blue-900/20 dark:text-blue-300">
+                        {project.type}
                       </span>
                     </div>
                     <span className="text-xs text-neutral-500 dark:text-neutral-400 sm:ml-4 flex-shrink-0">
@@ -393,7 +407,7 @@ export default function HomePage() {
                         className="flex items-center justify-center rounded-lg border-[0.5px] border-neutral-200 px-3 py-1.5 text-xs font-medium transition-all duration-300 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800"
                       >
                         <GlobeAltIcon className="mr-1 h-3 w-3" />
-                        访问
+                        Visit
                       </a>
                     )}
                     <a
@@ -403,7 +417,7 @@ export default function HomePage() {
                       className="flex items-center justify-center rounded-lg border-[0.5px] border-neutral-200 px-3 py-1.5 text-xs font-medium transition-all duration-300 hover:bg-neutral-100 dark:border-neutral-700 dark:hover:bg-neutral-800"
                     >
                       <CodeBracketIcon className="mr-1 h-3 w-3" />
-                      代码
+                      Code
                     </a>
                   </div>
                 </div>
@@ -412,32 +426,6 @@ export default function HomePage() {
           </section>
         </div>
       </div>
-
-      {/* 页脚 */}
-      <footer className="mt-16 pt-8 border-t border-neutral-200 dark:border-neutral-700 text-center">
-        <div className="prose prose-neutral text-sm dark:prose-invert">
-          <p>感谢访问我的个人主页！ ✨</p>
-          <p className="mt-2">
-            想了解更多？查看我的{' '}
-            <Link
-              href="/resume"
-              className="font-medium hover:text-neutral-600 dark:hover:text-neutral-400 transition-colors underline"
-            >
-              详细简历
-            </Link>
-            {' '}或{' '}
-            <a
-              href={personalInfo.website}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="font-medium hover:text-neutral-600 dark:hover:text-neutral-400 transition-colors underline"
-            >
-              个人博客
-            </a>
-            。
-          </p>
-        </div>
-      </footer>
     </section>
   )
 }

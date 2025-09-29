@@ -19,16 +19,16 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://blog.xqd.pp.ua'),
   title: {
-    default: 'Xqd - 个人主页',
+    default: 'Xqd - Personal Website',
     template: '%s | Xqd',
   },
-  description: '一个热爱技术和生活的学生开发者的个人空间。',
+  description: 'Computer Science student passionate about software development and web technologies.',
   openGraph: {
-    title: 'Xqd - 个人主页',
-    description: '一个热爱技术和生活的学生开发者的个人空间。',
+    title: 'Xqd - Personal Website',
+    description: 'Computer Science student passionate about software development and web technologies.',
     url: 'https://blog.xqd.pp.ua',
-    siteName: 'Xqd 的个人主页',
-    locale: 'zh_CN',
+    siteName: 'Xqd Personal Website',
+    locale: 'en_US',
     type: 'website',
   },
   robots: {
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     },
   },
   twitter: {
-    title: 'Xqd - 个人主页',
+    title: 'Xqd - Personal Website',
     card: 'summary_large_image',
   },
   alternates: {

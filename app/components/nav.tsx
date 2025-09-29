@@ -16,25 +16,25 @@ import {
 
 export const siteUrlList = [
   {
-    name: '主页',
+    name: 'Home',
     url: '/',
     icon: HomeIcon,
-    description: '个人空间首页'
+    description: 'Personal homepage'
   },
   {
-    name: '简历',
+    name: 'Resume',
     url: '/resume',
     icon: DocumentTextIcon,
-    description: '专业背景展示'
+    description: 'Professional background'
   },
 ]
 
 const quickActions = [
   {
-    name: '联系我',
+    name: 'Contact',
     icon: EnvelopeIcon,
     action: () => window.open('mailto:contact@example.com'),
-    description: '发送邮件联系'
+    description: 'Send email'
   }
 ]
 
@@ -93,7 +93,7 @@ export default function Nav() {
                 Xqd
               </h2>
               <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                学生 & 开发者
+                Computer Science Student
               </p>
             </div>
           </div>
@@ -128,10 +128,10 @@ export default function Nav() {
             ))}
           </div>
 
-          {/* 快速操作 */}
+          {/* Quick Actions */}
           <div className="mt-6 border-t border-neutral-200 pt-4 dark:border-neutral-700">
             <h3 className="mb-3 px-4 text-xs font-medium uppercase tracking-wider text-neutral-500 dark:text-neutral-400">
-              快速操作
+              Quick Actions
             </h3>
             <div className="space-y-2">
               {quickActions.map((action) => (
@@ -155,20 +155,11 @@ export default function Nav() {
             </div>
           </div>
         </nav>
-
-        {/* 侧边栏底部 */}
-        <div className="absolute bottom-0 left-0 right-0 border-t border-neutral-200 p-4 dark:border-neutral-700">
-          <div className="text-center">
-            <p className="text-xs text-neutral-500 dark:text-neutral-400">
-              © 2024 Xqd. 用 ❤️ 构建
-            </p>
-          </div>
-        </div>
       </div>
 
-      {/* 移动端底部导航栏（备用） */}
+      {/* Mobile bottom navigation (backup) */}
       <nav
-        aria-label="移动端导航"
+        aria-label="Mobile navigation"
         className="z-30 flex flex-col items-center justify-center md:hidden"
       >
         <div
